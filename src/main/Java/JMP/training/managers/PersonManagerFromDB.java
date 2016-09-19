@@ -34,7 +34,7 @@ public class PersonManagerFromDB implements PersonManager {
              PreparedStatement preparedStatement = connection.prepareStatement(query);) {
                 synchronized (lock) {
                     preparedStatement.setString(1, person.getName());
-                    preparedStatement.setInt(2, person.getAge());
+                    preparedStatement.setInt(2, person.getBalance());
                     preparedStatement.executeUpdate();
                 }
         } catch (SQLException | IllegalArgumentException | ClassNotFoundException | NamingException e) {
@@ -50,7 +50,7 @@ public class PersonManagerFromDB implements PersonManager {
         try ( Connection connection = connectionDAO.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query);) {
                 synchronized (lock) {
-                    preparedStatement.setInt(1, person.getAge());
+                    preparedStatement.setInt(1, person.getBalance());
                     preparedStatement.setString(2, person.getName());
                     preparedStatement.executeUpdate();
                 }
@@ -104,7 +104,7 @@ public class PersonManagerFromDB implements PersonManager {
         Person person = new Person();
 
         person.setName(rs.getString("NAME"));
-        person.setAge(rs.getInt("AGE"));
+        person.setBalance(rs.getInt("BALANCE"));
 
         return person;
     }

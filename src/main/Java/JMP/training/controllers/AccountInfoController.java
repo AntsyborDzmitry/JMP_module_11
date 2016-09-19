@@ -36,9 +36,11 @@ public class AccountInfoController {
         public String addMoney(@ModelAttribute("person")  Person newPerson, BindingResult result) {
 
             Person p = pmDB.readPerson(newPerson.getName());
-            int balance = p.getAge();
-            newPerson.setAge(balance + newPerson.getAge());
-            pmDB.updatePerson(newPerson);
+            if (p != null){
+                int balance = p.getBalance();
+                newPerson.setBalance(balance + newPerson.getBalance());
+                pmDB.updatePerson(newPerson);
+            }
             return "redirect:/accountInfo/info";
         }
 
@@ -49,8 +51,31 @@ public class AccountInfoController {
         }
 
         @RequestMapping("/withdraw")
-        public ModelAndView withdrawMoney() {
+        public String withdrawMoney(@ModelAttribute("person")  Person newPerson, BindingResult result) {
+            Person p = pmDB.readPerson(newPerson.getName());
+            if (p != null){
+                int balance = p.getBalance();
+                int newBalance = balance - Math.abs(newPerson.getBalance());
+                if (newBalance >= 0) {
+                    newPerson.setBalance(newBalance);
+                    pmDB.updatePerson(newPerson);
+                }
+            }
+            return "redirect:/accountInfo/info";
+        }
+        @RequestMapping("/createPage")
+        public String showCreatePage(Model model) {
+            model.addAttribute("person", new Person());
+            return "createAccount";
+        }
 
-            return new ModelAndView("withdrawMoney", "person", new Person());
+        @RequestMapping("/create")
+        public String createAccount(@ModelAttribute("person")  Person newPerson, BindingResult result) {
+           Person p = pmDB.readPerson(newPerson.getName());
+
+           if (p == null) {
+               pmDB.writePerson(newPerson);
+           }
+           return "redirect:/accountInfo/info";
         }
 }

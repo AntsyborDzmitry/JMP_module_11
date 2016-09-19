@@ -9,16 +9,11 @@
     </head>
     <body>
        <div class="withdraw">
-            <form method="post" modelAttribute="person" action="/spring_MVC/accountInfo/withdraw">
-                Name:  <form:input path="name" type="text" />
-                Amount:  <form:input path="age" type="text" />
-                <input type="submit" value="put" />
-                <form:errors path="name" />
-            </form>
+           <form:form method="get" commandName="person"  action="withdraw">
+                Name:  <form:input path="name"/>
+                Amount:  <form:input path="balance" />
+                <input type="submit" value="get" />
+           </form:form>
        </div>
     </body>
 </html>
-
-
-
-

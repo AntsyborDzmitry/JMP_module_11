@@ -11,7 +11,7 @@
        <div class="add">
            <form:form method="post" commandName="person"  action="add">
                 Name:  <form:input path="name"/>
-                Amount:  <form:input path="age" />
+                Amount:  <form:input path="balance" />
                 <input type="submit" value="put" />
            </form:form>
        </div>

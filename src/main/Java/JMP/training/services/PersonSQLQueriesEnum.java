@@ -12,7 +12,7 @@ public enum PersonSQLQueriesEnum {
     SAVE_PERSON {
         @Override
         public String getQuery() {
-            return " INSERT INTO person (name,age) VALUES (?,?)";
+            return " INSERT INTO person (name,balance) VALUES (?,?)";
         }
     },
     GET_PERSON_BY_NAME {
@@ -24,7 +24,7 @@ public enum PersonSQLQueriesEnum {
     UPDATE_PERSON_BY_NAME {
         @Override
         public String getQuery() {
-            return "UPDATE person  SET  AGE = ? WHERE NAME=?";
+            return "UPDATE person  SET  BALANCE = ? WHERE NAME=?";
         }
     };
 

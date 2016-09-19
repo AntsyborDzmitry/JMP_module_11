@@ -1,0 +1,15 @@
+table {
+    margin: 0 auto;
+}
+th,td {
+    width: 100px;
+    text-align: left;
+}
+button {
+    width: 56px;
+}
+.buttons {
+    margin: 0 auto;
+    width: 56px;
+    margin-top: 50px;
+}

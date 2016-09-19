@@ -14,9 +14,6 @@ import java.sql.SQLException;
 public class DBConnectionDAOSQLImpl implements DBConnectionDAO{
 
     private  final String DRIVER_CLASS = "org.apache.derby.jdbc.EmbeddedDriver";
-    private  static String CONECT_URL = "jdbc:derby:spring_MVC\\resources\\personDB;create=false;user=admin;password=admin";
-    private  final String USER = "admin";
-    private  final String PASSW = "admin";
     private  Connection baseConnection;
 
     private DataSource ds;
@@ -31,8 +28,6 @@ public class DBConnectionDAOSQLImpl implements DBConnectionDAO{
 
         ds = (DataSource)ctx.lookup("java:comp/env/jdbc/derbyDB");
         baseConnection = ds.getConnection();
-
-        //baseConnection = DriverManager.getConnection(CONECT_URL  , USER , PASSW);
 
         return baseConnection;
 

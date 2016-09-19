@@ -2,14 +2,14 @@ package JMP.training.beans;
 
 public class Person  {
     private String name ;
-    private int age ;
+    private int balance ;
 
     public Person() {
     }
 
-    public Person(String name, int age) {
+    public Person(String name, int balance) {
         this.name = name;
-        this.age = age;
+        this.balance = balance;
     }
 
 
@@ -17,16 +17,16 @@ public class Person  {
         return name;
     }
 
-    public int getAge() {
-        return age;
+    public int getBalance() {
+        return balance;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 
 }
